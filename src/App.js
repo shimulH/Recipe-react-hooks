@@ -29,9 +29,8 @@ const App = () => {
     const data = await response.json();
     console.log(data);
     data.hits.length === 0
-      ? setError(() => "Sory, there is no recipe for your search, try again")
+      ? setError(() => "Sorry, There is no recipe for your search, try another")
       : setRecipes(data.hits);
-    // setRecipes(data.hits);
   };
 
   const onSearchChange = e => {
@@ -43,6 +42,7 @@ const App = () => {
     e.preventDefault();
     setQuery(search);
     setSearch("");
+    setError("");
   };
   const handleIndex = index => {
     setPageIndex(index);

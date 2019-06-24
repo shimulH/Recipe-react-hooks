@@ -16,7 +16,7 @@ export default function SearchBar({ getSearch, setSearch }) {
                 <input
                   onChange={setSearch}
                   type="text"
-                  className="red lighten-2 autocomplete"
+                  className="red lighten-3 autocomplete"
                   id="autocomplete-input"
                   placeholder="Chicken"
                 />

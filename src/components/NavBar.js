@@ -4,14 +4,14 @@ export default function NavBar() {
   return (
     <div>
       <div className="navbar-fixed">
-        <nav className="green">
+        <nav className="teal lighten-2 ">
           <div className="container">
             <div className="nav-wrapper">
               <a href="#" className="brand-logo">
                 FoodBlog
               </a>
               <a href="#" data-target="mobile-nav" className="sidenav-trigger">
-                <i className="material-icons">Menu</i>
+                <i className="material-icons">arrow_downward</i>
               </a>
               <ul className="right hide-on-med-and-down">
                 <li>

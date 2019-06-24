@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import SearchBar from "./components/SearchBar";
-import Recipe from "./components/Recipe";
 import RecipeList from "./components/RecipeList";
+import RecipeDeteils from "./components/DetailsRecipe";
 
 // import "./App.css";
 
@@ -13,6 +13,9 @@ const App = () => {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
   const [query, setQuery] = useState("chicken");
+  const [pageIndex, setPageIndex] = useState(1);
+  const [ingredients, setIngredients] = useState([]);
+  const [currentRecipe, setCurrentRecipe] = useState([]);
 
   useEffect(() => {
     getRecipe();
@@ -24,7 +27,6 @@ const App = () => {
     );
     const data = await response.json();
     setRecipes(data.hits);
-    console.log(data.hits);
   };
 
   const onSearchChange = e => {
@@ -37,17 +39,38 @@ const App = () => {
     setQuery(search);
     setSearch("");
   };
+  const handleIndex = index => {
+    setPageIndex(index);
+  };
+  const handleDetails = (index, ingredients, currentRecipe) => {
+    setPageIndex(index);
+    setIngredients(ingredients);
+    setCurrentRecipe(currentRecipe);
+  };
+  const displayPage = index => {
+    switch (index) {
+      default:
+      case 1:
+        return <RecipeList recipes={recipes} handleDetails={handleDetails} />;
+      case 0:
+        return (
+          <RecipeDeteils
+            handleIndex={handleIndex}
+            query={query}
+            ingredients={ingredients}
+            currentRecipe={currentRecipe}
+          />
+        );
+    }
+  };
 
   return (
     <div id="home" className="scrollspy App">
       <NavBar />
       <div className="center ">
         <SearchBar setSearch={onSearchChange} getSearch={getSearch} />
-        {/* <div className="display-card-app">
-          <Recipe recipes={recipes} />
-        </div> */}
       </div>
-      <RecipeList recipes={recipes} />
+      {displayPage(pageIndex)}
     </div>
   );
 };

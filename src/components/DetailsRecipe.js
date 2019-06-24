@@ -12,10 +12,10 @@ export default function DetailsRecipe({
           <div className="col-10 mx-auto col-md-6 my-3">
             <button
               type="button"
-              className="btn btn-warning mb-5 text-capitalize"
+              className="btn btn-warning mb-5 text-capitalize btn-sm"
               onClick={() => handleIndex(1)}
             >
-              back
+              Back to main list
             </button>
             <img
               src={currentRecipe.recipe.image}

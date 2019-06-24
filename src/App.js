@@ -57,30 +57,35 @@ const App = () => {
       default:
       case 1:
         return (
-          <RecipeList
-            recipes={recipes}
-            handleDetails={handleDetails}
-            error={error}
-          />
+          <div id="home" className="scrollspy App">
+            <NavBar />
+            <div className="center ">
+              <SearchBar setSearch={onSearchChange} getSearch={getSearch} />
+            </div>
+            <RecipeList
+              recipes={recipes}
+              handleDetails={handleDetails}
+              error={error}
+            />
+          </div>
         );
       case 0:
         return (
-          <RecipeDeteils
-            handleIndex={handleIndex}
-            query={query}
-            ingredients={ingredients}
-            currentRecipe={currentRecipe}
-          />
+          <div id="home" className="scrollspy App">
+            <NavBar />
+            <RecipeDeteils
+              handleIndex={handleIndex}
+              query={query}
+              ingredients={ingredients}
+              currentRecipe={currentRecipe}
+            />
+          </div>
         );
     }
   };
 
   return (
     <div id="home" className="scrollspy App">
-      <NavBar />
-      <div className="center ">
-        <SearchBar setSearch={onSearchChange} getSearch={getSearch} />
-      </div>
       {displayPage(pageIndex)}
     </div>
   );

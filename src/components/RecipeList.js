@@ -8,7 +8,7 @@ export default function RecipeList({ recipes, handleDetails, error }) {
         {/* title */}
         <div className="row">
           <div className="col-10 mx-auto col-md-6 text-center text-uppercase mb-3">
-            <h1 className="text-slanted">recipe list</h1>
+            <h1 className="text-slanted green-text">recipe list</h1>
           </div>
         </div>
         {/* End Title */}

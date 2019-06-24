@@ -8,6 +8,12 @@
 .search-form {
   width: 70%;
 }
+body {
+  font-family: "Open Sans", sans-serif !important;
+}
+.text-slatent {
+  font-family: "Courier New", Courier, monospace;
+}
 
 .image-list {
   display: grid;

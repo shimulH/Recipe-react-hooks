@@ -5,18 +5,18 @@ export default function SearchBar({ getSearch, setSearch }) {
   return (
     <div
       id="search"
-      className="section section-search lime lighten-4 white-text center scrollspy"
+      className="section section-search white white-text center scrollspy"
     >
       <div className="container">
         <div className="row">
           <div className="col s12">
-            <h3 className="red-text lighten-2">Search Recepi</h3>
+            <h3 className="teal-text lighten-2 left-align ">Search Recipe</h3>
             <div className="input-field">
               <form onSubmit={getSearch}>
                 <input
                   onChange={setSearch}
                   type="text"
-                  className="white grey-text autocomplete"
+                  className="green lighten-2 autocomplete"
                   id="autocomplete-input"
                   placeholder="Chicken"
                 />

@@ -16,6 +16,7 @@ const App = () => {
   const [pageIndex, setPageIndex] = useState(1);
   const [ingredients, setIngredients] = useState([]);
   const [currentRecipe, setCurrentRecipe] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     getRecipe();
@@ -26,7 +27,11 @@ const App = () => {
       `https://api.edamam.com/search?q=${query}&app_id=${APP_ID}&app_key=${APP_KEY}`
     );
     const data = await response.json();
-    setRecipes(data.hits);
+    console.log(data);
+    data.hits.length === 0
+      ? setError(() => "Sory, there is no recipe for your search, try again")
+      : setRecipes(data.hits);
+    // setRecipes(data.hits);
   };
 
   const onSearchChange = e => {
@@ -51,7 +56,13 @@ const App = () => {
     switch (index) {
       default:
       case 1:
-        return <RecipeList recipes={recipes} handleDetails={handleDetails} />;
+        return (
+          <RecipeList
+            recipes={recipes}
+            handleDetails={handleDetails}
+            error={error}
+          />
+        );
       case 0:
         return (
           <RecipeDeteils

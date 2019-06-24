@@ -1,7 +1,7 @@
 import React from "react";
 import Recipe from "./Recipe";
 
-export default function RecipeList({ recipes, handleDetails }) {
+export default function RecipeList({ recipes, handleDetails, error }) {
   return (
     <div>
       <div className="container my5">
@@ -13,15 +13,19 @@ export default function RecipeList({ recipes, handleDetails }) {
         </div>
         {/* End Title */}
         <div className="row">
-          {recipes.map((recipe, index) => {
-            return (
-              <Recipe
-                key={index}
-                recipe={recipe}
-                handleDetails={handleDetails}
-              />
-            );
-          })}
+          {error ? (
+            <h1 className="text-danger text-center">{error}</h1>
+          ) : (
+            recipes.map((recipe, index) => {
+              return (
+                <Recipe
+                  key={index}
+                  recipe={recipe}
+                  handleDetails={handleDetails}
+                />
+              );
+            })
+          )}
         </div>
       </div>
     </div>
